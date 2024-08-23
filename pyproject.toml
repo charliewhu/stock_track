@@ -1,0 +1,16 @@
+[project]
+name = "stock-track"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.112.1",
+    "streamlit>=1.37.1",
+    "pytest>=8.3.2",
+    "duckdb>=1.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
