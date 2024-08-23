@@ -648,17 +648,23 @@ source = { editable = "." }
 dependencies = [
     { name = "duckdb" },
     { name = "fastapi" },
-    { name = "pytest" },
     { name = "streamlit" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "pytest" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "duckdb" },
-    { name = "fastapi" },
-    { name = "pytest" },
-    { name = "streamlit" },
+    { name = "duckdb", specifier = ">=1.0.0" },
+    { name = "fastapi", specifier = ">=0.112.1" },
+    { name = "streamlit", specifier = ">=1.37.1" },
 ]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=8.3.2" }]
 
 [[package]]
 name = "streamlit"
