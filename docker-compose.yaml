@@ -1,0 +1,27 @@
+services:
+
+  api:
+    build:
+      context: ./packages/api/
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./packages/api/:/api/
+    working_dir: /api
+
+  # webapp:
+  #   build:
+  #     context: ./ui/
+  #   ports:
+  #     - "8501:8501"
+  #   volumes:
+  #     - ./ui/:/app/
+  #   working_dir: /app
+  #   entrypoint: ["streamlit", "run", "main.py"]
+  #   depends_on:
+  #     - 'api'
+  #     - 'storage'
+  #   profiles:
+  #     - ''
+  #     - webapp
+  #     - fullstack

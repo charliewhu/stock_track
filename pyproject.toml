@@ -8,6 +8,7 @@ dependencies = [
     "fastapi>=0.112.1",
     "streamlit>=1.37.1",
     "duckdb>=1.0.0",
+    "sqlalchemy>=2.0.32",
 ]
 
 [build-system]
