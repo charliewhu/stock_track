@@ -1,13 +1,12 @@
 services:
 
   api:
-    build:
-      context: ./packages/api/
+    build: .
     ports:
       - "8000:8000"
     volumes:
-      - ./packages/api/:/api/
-    working_dir: /api
+      - ./src/api/:/src/api/
+    command: fastapi run src/api/app.py
 
   # webapp:
   #   build:
