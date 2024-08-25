@@ -912,8 +912,10 @@ source = { editable = "." }
 dependencies = [
     { name = "duckdb" },
     { name = "fastapi", extra = ["standard"] },
+    { name = "pandas" },
     { name = "sqlalchemy" },
     { name = "streamlit" },
+    { name = "watchdog" },
 ]
 
 [package.dev-dependencies]
@@ -927,8 +929,10 @@ dev = [
 requires-dist = [
     { name = "duckdb", specifier = ">=1.0.0" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.112.1" },
+    { name = "pandas", specifier = ">=2.2.2" },
     { name = "sqlalchemy", specifier = ">=2.0.32" },
     { name = "streamlit", specifier = ">=1.37.1" },
+    { name = "watchdog", specifier = ">=4.0.2" },
 ]
 
 [package.metadata.requires-dev]
