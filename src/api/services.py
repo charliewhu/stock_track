@@ -12,6 +12,19 @@ def create_production(
     return prod
 
 
+def update_production(
+    session: Session,
+    production: schemas.Production,
+):
+    # TODO handle possible IntegrityError
+    # by taking id as parameter and ensuring entity exists
+
+    prod = models.Production(**production.model_dump())
+    session.merge(prod)
+    session.commit()
+    return prod
+
+
 def list_production(session: Session):
     items = session.query(models.Production).all()
     return items

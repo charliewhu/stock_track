@@ -6,7 +6,7 @@ class Base(DeclarativeBase):
     pass
 
 
-def db_session_maker(DATABASE_URL: str = "sqlite:///sqlite.db"):
+def db_session_maker(DATABASE_URL: str = "sqlite:///src/api/sqlite.db"):
     engine = create_engine(
         DATABASE_URL,
         connect_args={"check_same_thread": False},

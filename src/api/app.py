@@ -15,6 +15,15 @@ def create_production(
     return services.create_production(session, production)
 
 
+@app.put("/{id}", response_model=schemas.Production)
+def update_production(
+    id: int,
+    production: schemas.Production,
+    session: Session = Depends(get_db),
+):
+    return services.update_production(session, production)
+
+
 @app.get("/", response_model=list[schemas.Production])
 def list_production(session: Session = Depends(get_db)):
     return services.list_production(session)

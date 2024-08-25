@@ -2,8 +2,8 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy.orm.session import Session
 
-from src.api.app import app, get_db
-from src.api.database import db_session_maker
+from api.app import app, get_db
+from api.database import db_session_maker
 
 
 @pytest.fixture()
