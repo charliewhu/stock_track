@@ -5,10 +5,15 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
 WORKDIR /app
 
-# install deps
-COPY pyproject.toml uv.lock /app/
-RUN uv pip install --system -r pyproject.toml
+# Copy the lockfile and `pyproject.toml` into the image
+COPY uv.lock pyproject.toml /app/
+
+# Install dependencies
+RUN uv sync --frozen --no-install-project
 
 # install application
 COPY . /app/
-RUN uv pip install --system -e .
+RUN uv sync --frozen
+
+# Place executables in the environment at the front of the path
+ENV PATH="/app/.venv/bin:$PATH"

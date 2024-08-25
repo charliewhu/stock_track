@@ -5,22 +5,15 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./src/api/:/src/api/
+      - ./src/api/:/app/src/api/
     command: fastapi run src/api/app.py
 
-  # webapp:
-  #   build:
-  #     context: ./ui/
-  #   ports:
-  #     - "8501:8501"
-  #   volumes:
-  #     - ./ui/:/app/
-  #   working_dir: /app
-  #   entrypoint: ["streamlit", "run", "main.py"]
-  #   depends_on:
-  #     - 'api'
-  #     - 'storage'
-  #   profiles:
-  #     - ''
-  #     - webapp
-  #     - fullstack
+  ui:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./src/ui/:/app/src/ui/
+    command: streamlit run src/ui/app.py --server.runOnSave True
+    depends_on:
+      - api
