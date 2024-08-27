@@ -95,7 +95,7 @@ class StreamlitApp:
                 tickformat="%Y-%m",
             ),
             xaxis_title=None,  # Remove the x-axis label
-            yaxis_title="fuck off",  # Remove the y-axis label
+            yaxis_title=None,  # Remove the y-axis label
         )
 
         st.plotly_chart(fig)
