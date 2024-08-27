@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import plotly.express as px
 from ui import connectors
 
 TITLE = "Production Tracker"
@@ -51,10 +52,53 @@ class StreamlitApp:
 
                     # Post the data to the API
                     self.api.put(row_dict)
+                    st.rerun()
 
         # Graph of productions
 
-        # Filter for each Field
+        # Ensure 'date' is in datetime format
+        df["date"] = pd.to_datetime(df["date"])
+
+        # Group by month and sum the quantities
+        df["month"] = df["date"].dt.to_period("M").astype(str)
+        monthly_data = df.groupby("month")["quantity"].sum().reset_index()
+
+        # Generate a complete list of months from the start to the end of the date range
+        start_date = df["date"].min().to_period("M").to_timestamp()
+        end_date = df["date"].max().to_period("M").to_timestamp()
+        all_months = pd.date_range(
+            start=start_date,
+            end=end_date,
+            freq="MS",
+        ).strftime("%Y-%m")
+        all_months_df = pd.DataFrame(all_months, columns=["month"])
+
+        # Merge the actual data with the complete list of months to ensure every month is represented
+        monthly_data_complete = pd.merge(
+            all_months_df, monthly_data, on="month", how="left"
+        ).fillna(0)
+
+        # Create chart
+        fig = px.bar(
+            monthly_data_complete,
+            x="month",
+            y="quantity",
+            labels={"month": "Month", "quantity": "Total Quantity"},
+            title="Total Quantity by Month",
+        )
+
+        # Update x-axis to show only one tick per bar
+        fig.update_layout(
+            xaxis=dict(
+                tickmode="array",
+                tickvals=monthly_data_complete["month"],
+                tickformat="%Y-%m",
+            ),
+            xaxis_title=None,  # Remove the x-axis label
+            yaxis_title="fuck off",  # Remove the y-axis label
+        )
+
+        st.plotly_chart(fig)
 
 
 def main():
