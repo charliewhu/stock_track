@@ -554,6 +554,19 @@ wheels = [
 ]
 
 [[package]]
+name = "plotly"
+version = "5.23.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "packaging" },
+    { name = "tenacity" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/db/9e/31b2f0b8f2357cd5f3e992c76c3e4e85a5cbbad8b8c5f23d0684e3f4c608/plotly-5.23.0.tar.gz", hash = "sha256:89e57d003a116303a34de6700862391367dd564222ab71f8531df70279fc0193", size = 8553751 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b8/f0/bcf716a8e070370d6598c92fcd328bd9ef8a9bda2c5562da5a835c66700b/plotly-5.23.0-py3-none-any.whl", hash = "sha256:76cbe78f75eddc10c56f5a4ee3e7ccaade7c0a57465546f02098c0caed6c2d1a", size = 17326571 },
+]
+
+[[package]]
 name = "pluggy"
 version = "1.5.0"
 source = { registry = "https://pypi.org/simple" }
@@ -906,43 +919,6 @@ wheels = [
 ]
 
 [[package]]
-name = "stock-track"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "duckdb" },
-    { name = "fastapi", extra = ["standard"] },
-    { name = "pandas" },
-    { name = "sqlalchemy" },
-    { name = "streamlit" },
-    { name = "watchdog" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "httpx" },
-    { name = "pre-commit" },
-    { name = "pytest" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "duckdb", specifier = ">=1.0.0" },
-    { name = "fastapi", extras = ["standard"], specifier = ">=0.112.1" },
-    { name = "pandas", specifier = ">=2.2.2" },
-    { name = "sqlalchemy", specifier = ">=2.0.32" },
-    { name = "streamlit", specifier = ">=1.37.1" },
-    { name = "watchdog", specifier = ">=4.0.2" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "httpx", specifier = ">=0.27.0" },
-    { name = "pre-commit", specifier = ">=3.8.0" },
-    { name = "pytest", specifier = ">=8.3.2" },
-]
-
-[[package]]
 name = "streamlit"
 version = "1.37.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1039,6 +1015,45 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/74/5b/e025d02cb3b66b7b76093404392d4b44343c69101cc85f4d180dd5784717/tzdata-2024.1.tar.gz", hash = "sha256:2674120f8d891909751c38abcdfd386ac0a5a1127954fbc332af6b5ceae07efd", size = 190559 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/65/58/f9c9e6be752e9fcb8b6a0ee9fb87e6e7a1f6bcab2cdc73f02bb7ba91ada0/tzdata-2024.1-py2.py3-none-any.whl", hash = "sha256:9068bc196136463f5245e51efda838afa15aaeca9903f49050dfa2679db4d252", size = 345370 },
+]
+
+[[package]]
+name = "ui"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "duckdb" },
+    { name = "fastapi", extra = ["standard"] },
+    { name = "pandas" },
+    { name = "plotly" },
+    { name = "sqlalchemy" },
+    { name = "streamlit" },
+    { name = "watchdog" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "httpx" },
+    { name = "pre-commit" },
+    { name = "pytest" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "duckdb", specifier = ">=1.0.0" },
+    { name = "fastapi", extras = ["standard"], specifier = ">=0.112.1" },
+    { name = "pandas", specifier = ">=2.2.2" },
+    { name = "plotly", specifier = ">=5.23.0" },
+    { name = "sqlalchemy", specifier = ">=2.0.32" },
+    { name = "streamlit", specifier = ">=1.37.1" },
+    { name = "watchdog", specifier = ">=4.0.2" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "httpx", specifier = ">=0.27.0" },
+    { name = "pre-commit", specifier = ">=3.8.0" },
+    { name = "pytest", specifier = ">=8.3.2" },
 ]
 
 [[package]]
