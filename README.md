@@ -16,6 +16,8 @@ It aims to allow easy create, list, update and delete functionality for various 
 
 ### Potential Enhancements
 
+- Add Fields / Grades for another granularity
+- Ability to filter charts by Field / Grade
 - Authentication and authorization middleware
 - Error handling for API endpoints
 - Frontend error handling in Streamlit UI
