@@ -27,9 +27,9 @@ class StreamlitApp:
                 data = {"date": str(date), "quantity": quantity}
                 self.api.post("/", data)
 
-        st.header("Productions")
+        st.subheader("Productions")
         st.write("Edit in cells")
-        df = pd.DataFrame(self.api.get("/"))
+        df = pd.DataFrame(self.api.get("/")).sort_values("date")
 
         # Editable table
         edited_df = st.data_editor(
