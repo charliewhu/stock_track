@@ -17,3 +17,10 @@ services:
     command: streamlit run src/ui/app.py --server.runOnSave True
     depends_on:
       - api
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    depends_on:
+      - ui
