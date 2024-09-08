@@ -1,5 +1,4 @@
-
-# Production Tracker App
+# Production Tracker App
 
 This app is a tracker for an imaginary commodity operations department to track production at various locations.
 

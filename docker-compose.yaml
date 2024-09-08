@@ -3,15 +3,14 @@ services:
   api:
     build: .
     ports:
-      - "8000:8000"
+      - "8000:200"
     volumes:
       - ./src/api/:/app/src/api/
     command: fastapi run src/api/app.py
 
   ui:
     build: .
-    ports:
-      - "8501:8501"
+    expose: 8501
     volumes:
       - ./src/ui/:/app/src/ui/
     command: streamlit run src/ui/app.py --server.runOnSave True
@@ -21,6 +20,7 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - 80:80
+      - 2:2
     depends_on:
+      - api
       - ui
