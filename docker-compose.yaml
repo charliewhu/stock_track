@@ -10,7 +10,8 @@ services:
 
   ui:
     build: .
-    expose: 8501
+    expose:
+      - 8501
     volumes:
       - ./src/ui/:/app/src/ui/
     command: streamlit run src/ui/app.py --server.runOnSave True
