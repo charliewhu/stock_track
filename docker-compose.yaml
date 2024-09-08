@@ -2,11 +2,13 @@ services:
 
   api:
     build: .
+    expose:
+      - 200
     ports:
-      - "8000:200"
+      - "200:200"
     volumes:
       - ./src/api/:/app/src/api/
-    command: fastapi run src/api/app.py
+    command: fastapi run src/api/app.py --host 0.0.0.0 --port 200
 
   ui:
     build: .
