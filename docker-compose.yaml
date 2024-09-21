@@ -4,11 +4,13 @@ services:
     build: .
     expose:
       - 200
-    ports:
-      - "200:200"
     volumes:
       - ./src/api/:/app/src/api/
     command: fastapi run src/api/app.py --host 0.0.0.0 --port 200
+    environment:
+      - VIRTUAL_HOST=api.prodtrack.charlieavery.site
+    networks:
+      - web
 
   ui:
     build: .
@@ -16,14 +18,24 @@ services:
       - 8501
     volumes:
       - ./src/ui/:/app/src/ui/
-    command: streamlit run src/ui/app.py --server.runOnSave True
+    command: streamlit run src/ui/app.py
     depends_on:
       - api
+    networks:
+      - web
 
   nginx:
     build: ./nginx
-    ports:
-      - 2:2
     depends_on:
       - api
       - ui
+    expose:
+      - 80
+    environment:
+      - VIRTUAL_HOST=prodtrack.charlieavery.site
+    networks:
+      - web
+
+networks:
+  web:
+    external: true

@@ -3,7 +3,7 @@ import httpx
 
 
 class APIConnector:
-    def __init__(self, base_url: str = "http://api:8000") -> None:
+    def __init__(self, base_url: str = "http://api:200") -> None:
         self._base_url = base_url
 
     def get(_self, endpoint: str):
