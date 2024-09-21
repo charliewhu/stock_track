@@ -12,7 +12,7 @@ services:
     networks:
       - web
 
-  ui:
+  prodtrack:
     build: .
     expose:
       - 8501
@@ -28,7 +28,7 @@ services:
     build: ./nginx
     depends_on:
       - api
-      - ui
+      - prodtrack
     expose:
       - 80
     environment:
