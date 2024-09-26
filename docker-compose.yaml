@@ -29,8 +29,6 @@ services:
       - prodtrack
     expose:
       - 80
-    ports:
-      - 80:80
     environment:
       - VIRTUAL_HOST=prodtrack.charlieavery.site
       - LETSENCRYPT_HOST=prodtrack.charlieavery.site
