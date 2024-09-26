@@ -7,8 +7,6 @@ services:
     volumes:
       - ./src/api/:/app/src/api/
     command: fastapi run src/api/app.py --host 0.0.0.0 --port 200
-    environment:
-      - VIRTUAL_HOST=api.prodtrack.charlieavery.site
     networks:
       - web
 
@@ -31,8 +29,11 @@ services:
       - prodtrack
     expose:
       - 80
+    ports:
+      - 80:80
     environment:
       - VIRTUAL_HOST=prodtrack.charlieavery.site
+      - LETSENCRYPT_HOST=prodtrack.charlieavery.site
     networks:
       - web
 
